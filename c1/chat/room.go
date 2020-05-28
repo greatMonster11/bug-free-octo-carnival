@@ -8,15 +8,25 @@ import (
 )
 
 type room struct {
-	// forward is a chanel that holds incomming message
-	// that should be forwarded to the other clients
+	// forward is a channel that holds incoming messages
+	// that should be forwarded to the other clients.
 	forward chan []byte
-	// join is a chanel for clients wishing to join the room
+	// join is a channel for clients wishing to join the room.
 	join chan *client
-	// leave is a chandle for clients wishing to leave the room
+	// leave is a channel for clients wishing to leave the room.
 	leave chan *client
-	// clients hold add curren in the room
+	// clients holds all current clients in this room.
 	clients map[*client]bool
+}
+
+// newRoom makes a new room.
+func newRoom() *room {
+	return &room{
+		forward: make(chan []byte),
+		join:    make(chan *client),
+		leave:   make(chan *client),
+		clients: make(map[*client]bool),
+	}
 }
 
 func (r *room) run() {
@@ -39,25 +49,24 @@ func (r *room) run() {
 }
 
 const (
-	socketBuffersize  = 1024
-	messageBuffersize = 256
+	socketBufferSize  = 1024
+	messageBufferSize = 256
 )
 
-var upgrader = &websocket.Upgrader{ReadBufferSize: socketBuffersize, WriteBufferSize: messageBuffersize}
+var upgrader = &websocket.Upgrader{ReadBufferSize: socketBufferSize,
+	WriteBufferSize: socketBufferSize}
 
 func (r *room) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	socket, err := upgrader.Upgrade(w, req, nil)
 	if err != nil {
-		log.Fatal("ServeHTTP: ", err)
+		log.Fatal("ServeHTTP:", err)
 		return
 	}
-
 	client := &client{
 		socket: socket,
-		send:   make(chan []byte, messageBuffersize),
+		send:   make(chan []byte, messageBufferSize),
 		room:   r,
 	}
-
 	r.join <- client
 	defer func() { r.leave <- client }()
 	go client.write()
