@@ -40,7 +40,7 @@ func main() {
 	gomniauth.WithProviders(
 		facebook.New("247468036676793", "c4ab86489ce441b2bf6db290ebf81895", "http://localhost:8080/auth/callback/facebook"),
 		github.New("key", "secret", "http://localhost:8080/auth/callback/github"),
-		google.New("653373243882-vjaag2t8ppgnpevhpcuso9bjemv27abm.apps.googleusercontent.com", "_LYRgdIVRaEYs2zQ138z5sFa", "http://localhost:8080/auth/google/callback"),
+		google.New("653373243882-vjaag2t8ppgnpevhpcuso9bjemv27abm.apps.googleusercontent.com", "_LYRgdIVRaEYs2zQ138z5sFa", "http://localhost:8080/auth/callback/google"),
 	)
 
 	r := newRoom()
