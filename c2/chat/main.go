@@ -38,9 +38,9 @@ func main() {
 	// setup gomniauth
 	gomniauth.SetSecurityKey("fafrf93jr98htuq34htg87htq8u2htq82hq2u")
 	gomniauth.WithProviders(
-		facebook.New("key", "secret", "http://localhost:8080/auth/callback/facebook"),
+		facebook.New("247468036676793", "c4ab86489ce441b2bf6db290ebf81895", "http://localhost:8080/auth/callback/facebook"),
 		github.New("key", "secret", "http://localhost:8080/auth/callback/github"),
-		google.New("116835047390-kgnk8b7609ti50plh6c2aiauuijbo4ee.apps.googleusercontent.com", "MlOAE_DKJ-Gm76xADj6sPpdW", "http://localhost:8080/auth/callback/google"),
+		google.New("653373243882-vjaag2t8ppgnpevhpcuso9bjemv27abm.apps.googleusercontent.com", "_LYRgdIVRaEYs2zQ138z5sFa", "http://localhost:8080/auth/google/callback"),
 	)
 
 	r := newRoom()
