@@ -2,6 +2,8 @@ package main
 
 import (
 	"errors"
+	"io/ioutil"
+	"path"
 )
 
 // ErrNoAvatar is the error that is returned when the
@@ -41,5 +43,30 @@ func (GravatarAvatar) GetAvatarURL(c *client) (string, error) {
 			return "//www.gravatar.com/avatar/" + useridStr, nil
 		}
 	}
+	return "", ErrNoAvatarURL
+}
+
+type FileSystemAvatar struct{}
+
+var UseFileSystemAvatar FileSystemAvatar
+
+func (FileSystemAvatar) GetAvatarURL(c *client) (string, error) {
+	if userid, ok := c.userData["userid"]; ok {
+		if useridStr, ok := userid.(string); ok {
+			files, err := ioutil.ReadDir("avatars")
+			if err != nil {
+				return "", ErrNoAvatarURL
+			}
+			for _, file := range files {
+				if file.IsDir() {
+					continue
+				}
+				if match, _ := path.Match(useridStr+"*", file.Name()); match {
+					return "/avatars/" + file.Name(), nil
+				}
+			}
+		}
+	}
+
 	return "", ErrNoAvatarURL
 }
