@@ -26,3 +26,9 @@ c4/domainify/domainify
 c4/coolify/coolify
 c4/synonyms/synonyms
 c4/available/available
+c4/domainfinder/domainfinder
+c4/domainfinder/lib/available
+c4/domainfinder/lib/coolify
+c4/domainfinder/lib/domainify
+c4/domainfinder/lib/sprinkle
+c4/domainfinder/lib/synonyms
