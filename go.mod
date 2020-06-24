@@ -3,6 +3,7 @@ module github.com/greatMonster11/bug-free-octo-carnival
 go 1.14
 
 require (
+	github.com/cheekybits/is v0.0.0-20150225183255-68e9c0620927
 	github.com/clbanning/x2j v0.0.0-20191024224557-825249438eec // indirect
 	github.com/gorilla/websocket v1.4.2
 	github.com/stretchr/codecs v0.0.0-20170403063245-04a5b1e1910d // indirect
@@ -12,5 +13,7 @@ require (
 	github.com/stretchr/stew v0.0.0-20130812190256-80ef0842b48b // indirect
 	github.com/stretchr/tracer v0.0.0-20140124184152-66d3696bba97 // indirect
 	github.com/ugorji/go v1.1.7 // indirect
+	golang.org/x/lint v0.0.0-20200302205851-738671d3881b // indirect
+	golang.org/x/tools v0.0.0-20200619210111-0f592d2728bb // indirect
 	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22 // indirect
 )
