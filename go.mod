@@ -6,6 +6,7 @@ require (
 	github.com/cheekybits/is v0.0.0-20150225183255-68e9c0620927
 	github.com/clbanning/x2j v0.0.0-20191024224557-825249438eec // indirect
 	github.com/gorilla/websocket v1.4.2
+	github.com/matryer/filedb v0.0.0-20141103144311-3641db67a8c9
 	github.com/stretchr/codecs v0.0.0-20170403063245-04a5b1e1910d // indirect
 	github.com/stretchr/gomniauth v0.0.0-20170717123514-4b6c822be2eb
 	github.com/stretchr/objx v0.2.0

@@ -34,3 +34,5 @@ c4/domainfinder/lib/sprinkle
 c4/domainfinder/lib/synonyms
 
 c7/cmd/meander/meanderapi
+
+c8/backup/cmds/backup/backup
